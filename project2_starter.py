@@ -1,6 +1,6 @@
 """
 COMP 163 - Project 2: Character Abilities Showcase
-Name: [Your Name Here]
+Name: Anzino Darden
 Date: [Date]
 
 AI Usage: [Document any AI assistance used]
