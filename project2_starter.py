@@ -1,7 +1,7 @@
 """
 COMP 163 - Project 2: Character Abilities Showcase
 Name: Anzino Darden
-Date: [Date]
+Date: 11/12/2025
 
 AI Usage: AI assistance was used to help interpret assignment instructions, following TODO requirements,
 and structure class inheritance and method overriding properly. The AI also assisted with formatting, and ensuring code readability and functionality.
