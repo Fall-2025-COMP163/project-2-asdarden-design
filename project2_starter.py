@@ -3,10 +3,11 @@ COMP 163 - Project 2: Character Abilities Showcase
 Name: Anzino Darden
 Date: [Date]
 
-AI Usage: [Document any AI assistance used]
+AI Usage: AI assistance was used to help interpret assignment instructions, following TODO requirements,
+and structure class inheritance and method overriding properly. The AI also assisted with formatting, and ensuring code readability and functionality.
 Example: AI helped with inheritance structure and method overriding concepts
 """
-
+import random
 # ============================================================================
 # PROVIDED BATTLE SYSTEM (DO NOT MODIFY)
 # ============================================================================
@@ -235,7 +236,14 @@ class Rogue(Player):
         # TODO: Implement rogue attack
         # Could add a chance for critical hit (double damage)
         # Hint: use random.randint(1, 10) and if result <= 3, it's a crit
-        pass
+        crit_chance = random.randint(1, 10)
+        if crit_chance <= 3:
+            damage = self.strength * 2
+            print(f"💥 Critical hit! {self.name} strikes {target.name} for {damage} damage!")
+        else:
+            damage = self.strength
+            print(f"{self.name} swiftly attacks {target.name} for {damage} damage!")
+        target.take_damage(damage)
         
     def sneak_attack(self, target):
         """
@@ -243,7 +251,9 @@ class Rogue(Player):
         """
         # TODO: Implement sneak attack
         # Should always do critical damage
-        pass
+        damage = self.strength * 2
+        print(f"{self.name} performs a Sneak Attack on {target.name} for {damage} damage!")
+        target.take_damage(damage)
 
 class Weapon:
     """
@@ -256,14 +266,15 @@ class Weapon:
         Create a weapon with a name and damage bonus.
         """
         # TODO: Store weapon name and damage bonus
-        pass
+        self.name = name
+        self.damage_bonus = damage_bonus
         
     def display_info(self):
         """
         Display information about this weapon.
         """
         # TODO: Print weapon name and damage bonus
-        pass
+        print(f"Weapon: {self.name} | Damage Bonus: {self.damage_bonus}")
 
 # ============================================================================
 # MAIN PROGRAM FOR TESTING (YOU CAN MODIFY THIS FOR TESTING)
@@ -278,12 +289,19 @@ if __name__ == "__main__":
     # warrior = Warrior("Sir Galahad")
     # mage = Mage("Merlin")
     # rogue = Rogue("Robin Hood")
+    warrior = Warrior("Sir Galahad")
+    mage = Mage("Merlin")
+    rogue = Rogue("Robin Hood")
     
     # TODO: Display their stats
     # print("\n📊 Character Stats:")
     # warrior.display_stats()
     # mage.display_stats()
     # rogue.display_stats()
+    print("\n📊 Character Stats:")
+    warrior.display_stats(); print()
+    mage.display_stats(); print()
+    rogue.display_stats()
     
     # TODO: Test polymorphism - same method call, different behavior
     # print("\n⚔️ Testing Polymorphism (same attack method, different behavior):")
@@ -293,6 +311,12 @@ if __name__ == "__main__":
     #     print(f"\n{character.name} attacks the dummy:")
     #     character.attack(dummy_target)
     #     dummy_target.health = 100  # Reset dummy health
+    print("\n⚔️ Testing Polymorphism (attack methods differ):")
+    dummy_target = Character("Target Dummy", 100, 0, 0)
+    for character in [warrior, mage, rogue]:
+        print(f"\n{character.name} attacks the dummy:")
+        character.attack(dummy_target)
+        dummy_target.health = 100
     
     # TODO: Test special abilities
     # print("\n✨ Testing Special Abilities:")
@@ -303,6 +327,12 @@ if __name__ == "__main__":
     # warrior.power_strike(target1)
     # mage.fireball(target2)
     # rogue.sneak_attack(target3)
+    target1 = Character("Enemy1", 50, 0, 0)
+    target2 = Character("Enemy2", 50, 0, 0)
+    target3 = Character("Enemy3", 50, 0, 0)
+    warrior.power_strike(target1)
+    mage.fireball(target2)
+    rogue.sneak_attack(target3)
     
     # TODO: Test composition with weapons
     # print("\n🗡️ Testing Weapon Composition:")
@@ -313,10 +343,20 @@ if __name__ == "__main__":
     # sword.display_info()
     # staff.display_info()
     # dagger.display_info()
+    print("\n🗡️ Testing Weapon Composition:")
+    sword = Weapon("Iron Sword", 10)
+    staff = Weapon("Magic Staff", 15)
+    dagger = Weapon("Steel Dagger", 8)
+    sword.display_info()
+    staff.display_info()
+    dagger.display_info()
     
     # TODO: Test the battle system
     # print("\n⚔️ Testing Battle System:")
     # battle = SimpleBattle(warrior, mage)
     # battle.fight()
+    print("\n⚔️ Testing Battle System:")
+    battle = SimpleBattle(warrior, mage)
+    battle.fight()
     
     print("\n✅ Testing complete!")
