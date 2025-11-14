@@ -145,3 +145,33 @@ Feel free to add your own creative touches for bonus points:
 - Additional character classes beyond the three required
 - More weapon types with different properties
 - Enhanced special abilities with unique effects
+
+## 📚 Project Documentation
+
+# ⭐ Bonus Creative Features
+
+These optional enhancements were added:
+
+- **Critical hit system for the Rogue**
+- **Randomized critical chance in normal Rogue attacks**
+- **Three unique weapons for demonstration**
+- **Extra attack bonuses for each class (Warrior +5 attack, Mage magic-based damage)**
+
+# 🤖 AI Usage Documentation
+
+AI was used as a support tool for:
+
+- Interpreting assignment instructions  
+- Structuring the inheritance chain  
+- Implementing method overriding  
+- Ensuring the special abilities meet all testing requirements  
+- Adding comments and clarity  
+- Creating this full README and documentation  
+- Organizing the final code for readability  
+
+# ▶️ How to Run the Project
+
+### **Run the main file**
+```bash
+python project2_starter.py
+
